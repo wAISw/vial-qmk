@@ -8,7 +8,10 @@
         "cols": 6
     },
     "layouts": {
-        "labels": ["Remove left encoder", "Remove right encoder"],
+        "labels": [
+            "Remove left encoder",
+            "Remove right encoder"
+        ],
         "keymap": [
             {
                 "name": "Lotus58"
