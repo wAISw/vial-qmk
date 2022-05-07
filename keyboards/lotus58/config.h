@@ -23,6 +23,7 @@
 #define ENCODERS_PAD_A_RIGHT { F4 }
 #define ENCODERS_PAD_B_RIGHT { F5 }
 #define ENCODER_RESOLUTION 1
+#define ENCODER_DIRECTION_FLIP
 
 // Define detection pin handedness
 #define SPLIT_HAND_PIN B5
@@ -41,17 +42,16 @@
 #define DEBOUNCE 5
 #define TAP_CODE_DELAY 10
 
-// Basic RGB configuration
-// #define RGB_DI_PIN D3
-// #define RGBLIGHT_SPLIT
-
-// Disable depreciated
-#define NO_ACTION_MACRO
-#define NO_ACTION_FUNCTION
-
 /* Debounce reduces chatter (unintended double-presses) - set 0 if debouncing is not needed */
 #define DEBOUNCE 5
 
 /* Bootmagic Lite key configuration */
 #define BOOTMAGIC_LITE_ROW 0
 #define BOOTMAGIC_LITE_COLUMN 0
+
+// Disable depreciated
+#define NO_ACTION_MACRO
+#define NO_ACTION_FUNCTION
+
+#undef LOCKING_SUPPORT_ENABLE
+#undef LOCKING_RESYNC_ENABLE

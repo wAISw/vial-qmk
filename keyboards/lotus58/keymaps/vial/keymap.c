@@ -118,13 +118,13 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 #ifdef OLED_ENABLE
 
 static void render_logo(void) {
-    static const char PROGMEM qmk_logo[] = {
-        0x80,0x81,0x82,0x83,0x84,0x85,0x86,0x87,0x88,0x89,0x8a,0x8b,0x8c,0x8d,0x8e,0x8f,0x90,0x91,0x92,0x93,0x94,
-        0xa0,0xa1,0xa2,0xa3,0xa4,0xa5,0xa6,0xa7,0xa8,0xa9,0xaa,0xab,0xac,0xad,0xae,0xaf,0xb0,0xb1,0xb2,0xb3,0xb4,
-        0xc0,0xc1,0xc2,0xc3,0xc4,0xc5,0xc6,0xc7,0xc8,0xc9,0xca,0xcb,0xcc,0xcd,0xce,0xcf,0xd0,0xd1,0xd2,0xd3,0xd4,0
+    static const char PROGMEM raw_logo[] = {
+        0,  0,  0,  0,  0,  0,  0,192,128,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,128,128,128,128,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,128,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,128,128,128,128,  0,  0,  0,  0,  0,  0,  0,  0,  0,
+        0,  0,  0,  0,  0,  0,  1,255,255,255, 30, 30, 60, 24,  0,  0,  0,  0,224,248,252, 62, 30,143,231,231,199,  7,  7,  7, 15, 15, 30,124,248,240,128,  7,  7,  7,  7,  7,  7,255,255,255, 15,  7,  7,  7,  7,  7,  7,248,255,255,159,  0,  0,  0,  0,  0,  0,  0,  0,  0, 15,255,255,248,  0,112,252,254,254,199,135,135,  3,  3,  3,  7,  7,  7,  7, 15, 14, 30, 12,  0,  7,  7,  7,255,255,255,231,247,119,119,119,119,247,231,231,199,128,  0,112,252,254,254,207,135,135,131,  3,  7,135,199,231,255,127, 62, 30, 12,  0,  0,
+        0,  0,240,240,184,184,248,255,127, 63,120,112,112,112,240,224,224,227,127, 63,127,240,224,224,241,127, 63,159,128,128,192,192,224,248,127, 63, 15,  0,  0,  0,  0,  0,  0,255,255,255,  0,  0,  0,  0,  0,  0,  0,  1, 15, 31, 63,124,240,224,224,192,192,192,192,224,248,127, 63, 15,  0,  0,112,113,241,227,227,227,199,199,199,199,238,254,254,124, 16,  0,  0,  0,112,112,240,225,225,225,192,192,192,192,192,192,224,225,255,127, 63,  0,  0,112,121,255,255,239,231,199,199,199,199,239,255,255,124, 24,  0,  0,  0,  0,
+        0,  0,  0,  1,  1,  1,  1,  1,  0,  0,  0,  0,  0,  0,  0,  0,  0,  1,  0,  0,  0,  0,  0,  0,  0,  0,  0,  1,  3,  3,  1,  1,  1,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  3,  3,  3,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  1,  1,  1,  1,  1,  1,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  1,  1,  1,  1,  1,  1,  1,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  1,  1,  1,  1,  1,  1,  1,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  1,  1,  1,  1,  1,  1,  0,  0,  0,  0,  0,  0,  0,  0,
     };
-
-    oled_write_P(qmk_logo, false);
+    oled_write_raw_P(raw_logo, sizeof(raw_logo));
 }
 
 static void print_status_narrow(void) {
@@ -134,14 +134,6 @@ static void print_status_narrow(void) {
     oled_write_P(PSTR("Lotus -58-"), false);
   oled_write_P(PSTR("\n"), false);
 
-    switch (get_highest_layer(default_layer_state)) {
-        case _QWERTY:
-            oled_write_P(PSTR("Qwrty"), false);
-            break;
-        default:
-            oled_write_P(PSTR("Undef"), false);
-    }
-    oled_write_P(PSTR("\n"), false);
     // Print current layer
     oled_write_P(PSTR("Layer"), false);
     switch (get_highest_layer(layer_state)) {
@@ -160,10 +152,6 @@ static void print_status_narrow(void) {
         default:
             oled_write_P(PSTR("Undef"), false);
     }
-    oled_write_P(PSTR("\n"), false);
-    led_t led_usb_state = host_keyboard_led_state();
-    oled_write_ln_P(PSTR("CPSLK"), led_usb_state.caps_lock);
-    oled_write_P(PSTR("\n"), false);
 }
 
 oled_rotation_t oled_init_user(oled_rotation_t rotation) {

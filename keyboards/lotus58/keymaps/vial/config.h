@@ -21,8 +21,15 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 #define VIAL_KEYBOARD_UID {0xAE, 0x5E, 0xC7, 0x5F, 0x6A, 0xAF, 0xB3, 0x50}
 
-#define VIAL_UNLOCK_COMBO_ROWS { 1, 3 }
-#define VIAL_UNLOCK_COMBO_COLS { 5, 5 }
+#define MASTER_RIGHT
+
+#ifdef MASTER_RIGHT
+    #define VIAL_UNLOCK_COMBO_ROWS { 6, 8 }
+    #define VIAL_UNLOCK_COMBO_COLS { 5, 5 }
+#else
+    #define VIAL_UNLOCK_COMBO_ROWS { 1, 3 }
+    #define VIAL_UNLOCK_COMBO_COLS { 5, 5 }
+#endif
 
 #define ENCODER_DIRECTION_FLIP
 
@@ -53,9 +60,3 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 	#define RGBLIGHT_EFFECT_RAINBOW_SWIRL
     // #define RGBLIGHT_EFFECT_RGB_TEST
 #endif
-
-#undef LOCKING_SUPPORT_ENABLE
-#undef LOCKING_RESYNC_ENABLE
-
-#undef NO_DEBUG
-#undef NO_PRINT
