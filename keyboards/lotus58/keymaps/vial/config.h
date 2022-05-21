@@ -21,7 +21,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 #define VIAL_KEYBOARD_UID {0xAE, 0x5E, 0xC7, 0x5F, 0x6A, 0xAF, 0xB3, 0x50}
 
-#define MASTER_RIGHT
+// #define MASTER_RIGHT
 
 #ifdef MASTER_RIGHT
     #define VIAL_UNLOCK_COMBO_ROWS { 6, 8 }
@@ -31,10 +31,14 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
     #define VIAL_UNLOCK_COMBO_COLS { 5, 5 }
 #endif
 
-#define ENCODER_DIRECTION_FLIP
 
-#define VIAL_ENCODER_DEFAULT { KC_VOLD, KC_VOLU, KC_VOLD, KC_VOLU, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS }
+#ifdef ENCODER_ENABLE
+    #define ENCODER_DIRECTION_FLIP
+#endif
 
+#ifdef VIAL_ENCODERS_ENABLE
+    #define VIAL_ENCODER_DEFAULT { KC_VOLD, KC_VOLU, KC_VOLD, KC_VOLU, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS }
+#endif
 
 #ifdef RGBLIGHT_ENABLE
     #define RGB_DI_PIN D3
