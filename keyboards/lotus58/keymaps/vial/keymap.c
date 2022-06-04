@@ -120,36 +120,28 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 #ifdef OLED_ENABLE
 
 static void render_master(void) {
-    // Print current mode
+    oled_write_P(PSTR("LOTUS\n"), false);
     led_t led_state = host_keyboard_led_state();
-    oled_write_P(PSTR("LOTUS -58-\n\n\n"), false);
-    oled_write_P(PSTR("\n\n\nLAYER"), false);
-    oled_write_raw_P(layers[get_highest_layer(layer_state)], 96);
+    oled_write_P(PSTR("CAPS \n"), led_state.caps_lock);
+    oled_write_P(PSTR("SCRL \n"), led_state.scroll_lock);
+    oled_write_P(PSTR("NUM  \n"), led_state.num_lock);
 
     int current_layer = get_highest_layer(layer_state);
-
     int i = 3;
-    while (i >= 0)
-    {
-        if (i <= current_layer)
+    while (i >= 0) {
+        if (i == current_layer) {
+            oled_write_P(PSTR("\n=="), false);
+            oled_write_char(i + 0x30, false);
+            oled_write_P(PSTR("=="), false);
+        } else if (i < current_layer) {
+            oled_write_P(PSTR("\n--"), false);
+            oled_write_char(i + 0x30, false);
             oled_write_P(PSTR("--"), false);
-            oled_write_char(current_layer + 0x30, false);
-            oled_write_P(PSTR("--"), false);
-        else
-            oled_write_P(PSTR("\n"), false);
-       i--;
+        } else {
+            oled_write_P(PSTR("\n\n"), false);
+        }
+        i--;
     }
-}
-
-static void render_logo(void) {
-    // Print current mode
-    led_t led_state = host_keyboard_led_state();
-    oled_write_P(PSTR("LOTUS -58-\n\n\nC|S|N"), false);
-    oled_write_P(PSTR(" "), led_state.caps_lock);
-    oled_write_P(PSTR("|"), false);
-    oled_write_P(PSTR(" "), led_state.scroll_lock);
-    oled_write_P(PSTR("|"), false);
-    oled_write_P(PSTR(" "), led_state.num_lock);
 }
 
 oled_rotation_t oled_init_user(oled_rotation_t rotation) {
@@ -157,12 +149,7 @@ oled_rotation_t oled_init_user(oled_rotation_t rotation) {
 }
 
 bool oled_task_user(void) {
-    if (is_keyboard_master()) {
-        render_master();
-    }else{
-        render_logo();
-        // oled_scroll_right();
-    }
+    render_master();
     return false;
 }
 

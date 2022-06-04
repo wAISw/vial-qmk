@@ -2,7 +2,6 @@
 
 #include "config_common.h"
 
-#define DYNAMIC_KEYMAP_LAYER_COUNT 4
 // USB Device descriptor parameter
 #define VENDOR_ID    0x0079
 #define PRODUCT_ID   0x0058
@@ -37,7 +36,7 @@
 // #define SERIAL_USE_MULTI_TRANSACTION
 // #define SPLIT_MODS_ENABLE
 // #define SPLIT_TRANSPORT_MIRROR
-// #define SPLIT_LAYER_STATE_ENABLE
+#define SPLIT_LAYER_STATE_ENABLE
 #define SPLIT_LED_STATE_ENABLE
 
 // Used for tapping in keymap
@@ -51,6 +50,7 @@
 /* Bootmagic Lite key configuration */
 #define BOOTMAGIC_LITE_ROW 0
 #define BOOTMAGIC_LITE_COLUMN 0
+
 #define BOOTMAGIC_LITE_ROW_RIGHT 5
 #define BOOTMAGIC_LITE_COLUMN_RIGHT 0
 
