@@ -3,6 +3,7 @@ MCU = atmega32u4
 
 # Bootloader selection
 BOOTLOADER = caterina
+BOOTMAGIC_ENABLE = yes
 
 # Build Options
 #   change yes to no to disable

@@ -2,6 +2,7 @@
 
 #include "config_common.h"
 
+#define DYNAMIC_KEYMAP_LAYER_COUNT 6
 // USB Device descriptor parameter
 #define VENDOR_ID    0x0079
 #define PRODUCT_ID   0x0058
@@ -18,12 +19,12 @@
 #define DIODE_DIRECTION COL2ROW
 
 // Encoder support
-#define ENCODERS_PAD_A { F5 }
-#define ENCODERS_PAD_B { F4 }
-#define ENCODERS_PAD_A_RIGHT { F4 }
-#define ENCODERS_PAD_B_RIGHT { F5 }
-#define ENCODER_RESOLUTION 1
-#define ENCODER_DIRECTION_FLIP
+// #define ENCODERS_PAD_A { F5 }
+// #define ENCODERS_PAD_B { F4 }
+// #define ENCODERS_PAD_A_RIGHT { F4 }
+// #define ENCODERS_PAD_B_RIGHT { F5 }
+// #define ENCODER_RESOLUTION 1
+// #define ENCODER_DIRECTION_FLIP
 
 // Define detection pin handedness
 #define SPLIT_HAND_PIN B5
@@ -36,6 +37,8 @@
 // #define SERIAL_USE_MULTI_TRANSACTION
 // #define SPLIT_MODS_ENABLE
 // #define SPLIT_TRANSPORT_MIRROR
+// #define SPLIT_LAYER_STATE_ENABLE
+#define SPLIT_LED_STATE_ENABLE
 
 // Used for tapping in keymap
 #define TAPPING_TERM 100
@@ -48,7 +51,6 @@
 /* Bootmagic Lite key configuration */
 #define BOOTMAGIC_LITE_ROW 0
 #define BOOTMAGIC_LITE_COLUMN 0
-
 #define BOOTMAGIC_LITE_ROW_RIGHT 5
 #define BOOTMAGIC_LITE_COLUMN_RIGHT 0
 
