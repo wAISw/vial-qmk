@@ -122,9 +122,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 static void render_master(void) {
     oled_write_P(PSTR("LOTUS\n"), false);
     led_t led_state = host_keyboard_led_state();
-    oled_write_P(PSTR("CAPS \n"), led_state.caps_lock);
-    oled_write_P(PSTR("SCRL \n"), led_state.scroll_lock);
-    oled_write_P(PSTR("NUM  \n"), led_state.num_lock);
+    oled_write_P(led_state.num_lock ? PSTR("NUM  \n") : PSTR("\n\n"), false);
+    oled_write_P(led_state.caps_lock ? PSTR("CAPS \n") : PSTR("\n\n"), false);
+    oled_write_P(led_state.scroll_lock ? PSTR("SCRL \n") : PSTR("\n\n"), false);
 
     int current_layer = get_highest_layer(layer_state);
     int i = 3;
